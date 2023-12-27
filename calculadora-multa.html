@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Sistema de Multas</title>
+</head>
+<body>
+    <h1>Sistema de Multas</h1>
+    
+    <div style="float: left; width: 50%; font-family: Arial, Helvetica, sans-serif;">
+        <label for="velocidadeVia">Velocidade Máxima da Via:</label>
+        <input type="text" id="velocidadeVia" placeholder="Digite a velocidade máxima da via">
+        <br>
+        <label for="velocidadeVeiculo">Velocidade do Veículo:</label>
+        <input type="text" id="velocidadeVeiculo" placeholder="Digite a velocidade do veículo">
+        <br>
+        <button onclick="calcularMulta()" style="background-color: black; color: white; border-radius: 5%;">Calcular</button>
+    </div>
+
+    <div style="float: right; width: 50%;">
+
+        <h3>Multa por Excesso de Velocidade:</h3>
+        <p id="resultadoMulta"></p>
+    </div>
+
+    <script>
+        function calcularMulta() {
+            const velocidadeVia = parseFloat(document.getElementById("velocidadeVia").value);
+            const velocidadeVeiculo = parseFloat(document.getElementById("velocidadeVeiculo").value);
+
+            const limite20 = velocidadeVia * 1.2;
+            const limite50 = velocidadeVia * 1.5;
+
+            let multa = 0;
+
+            if (velocidadeVeiculo <= limite20) {
+                multa = 130.16;
+            } else if (velocidadeVeiculo <= limite50) {
+                multa = 195.23;
+            } else {
+                multa = 880.41;
+            }
+
+            document.getElementById("resultadoMulta").innerHTML = `Multa por excesso de velocidade no valor de: R$ ${multa}`;
+        }
+    </script>
+</body>
+</html>
